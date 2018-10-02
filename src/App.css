@@ -1,0 +1,34 @@
+.App {
+  align-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.input {
+  padding-left: 33%;
+  padding-top: 10.5%;
+  padding-right: 33%;
+}
+
+#ballsnumber {
+  width: 100%;
+  height: 45px;
+  border: 0;
+  box-shadow: 3px;
+  font-size: 23px;
+  outline-width: 0;
+}
+
+.ballsnumber {
+  box-shadow:0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+.paragraph {
+  text-align: center;
+  font-size: 50px;
+}
+
+.Canvas {
+  width: 100%;
+  height: 100%;
+}
