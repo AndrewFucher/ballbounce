@@ -13,8 +13,8 @@ function game(e: any) {
     if (balls < 20) {
       balls = 20;
     }
-    if (balls > 100) {
-      balls = 100
+    if (balls > 50) {
+      balls = 50;
     }
 
     // creating canvas and running animation
