@@ -128,8 +128,10 @@ function collisionturn(a: any, b: any, i: number, j: number) {
 function collision() {
   for (let i = 0; i < balldirections.length; i++) {
     for (let j = i + 1; j < balldirections.length; j++) {
-      if(Math.sqrt((ballcoords[i][0] - ballcoords[j][0])**2 + (ballcoords[i][1] - ballcoords[j][1])**2) <= ballsize*2 + 1 * speedcoeficient + 1) {
+      if(Math.sqrt((ballcoords[i][0] - ballcoords[j][0])**2 + (ballcoords[i][1] - ballcoords[j][1])**2) <= ballsize*2 + 1 * speedcoeficient - 2) {
         collisionturn(ballcoords[i], ballcoords[j], i, j);
+        ballcoords[i] = [ballcoords[i][0] + balldirections[i][0], ballcoords[i][1] + balldirections[i][1]];
+        ballcoords[j] = [ballcoords[j][0] + balldirections[j][0], ballcoords[j][1] + balldirections[j][1]];
       }
     }
   }
@@ -140,7 +142,7 @@ function collision() {
 function fillballcoords(a: number) {
   // a - number of balls
   for (let i = 0; i < a; i++) {
-    ballcoords.push([ballsize, ballsize]);
+    ballcoords.push([-2*ballsize, -2*ballsize]);
   }
 }
 
@@ -207,6 +209,7 @@ function Ballsimages(balls: number) {
   const style: any = {
     'height': '50px',
     'position': 'absolute',
+    'top': String(-3*ballsize) + 'px',
     'zIndex': '1'
   };
 
