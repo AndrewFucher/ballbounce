@@ -30,7 +30,6 @@ let coords: number[];
 let screensize: number[];
 // let frame: any;
 const ballsize: number = 25 * (window.innerHeight/1010);
-alert(window.innerHeight);
 // let ball_radius: number;
 // tslint:disable-next-line:interface-name
 interface Props{
