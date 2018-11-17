@@ -16,7 +16,7 @@ let ay: number; // y of second vector
 let cosa: number;
 let sina: number;
 let some: number[];
-const speedcoeficient: number = 1;
+const speed: number = 2;
 let straight: number[];
 let someone: number[];
 // tslint:disable-next-line:prefer-const
@@ -38,12 +38,12 @@ interface Props{
 
 function rotationclockwise(x: number, y: number, cosan: number, sinan: number) {
   // rotangle = rotangle*180/Math.PI; // degrees to radians
-  return [x*cosan + y*sinan, -x*sinan + y*cosan];
+  return [Math.round(100 * (x*cosan + y*sinan)) / 100, Math.round((-x*sinan + y*cosan) * 100) / 100];
 }
 
 function rotationcounterclockwise(x: number, y: number, cosan: number, sinan: number) {
   // rotangle = rotangle*180/Math.PI; // degrees to radians
-  return [x*cosan - y*sinan, x*sinan + y*cosan]
+  return [Math.round((x*cosan - y*sinan) * 100) / 100, Math.round((x*sinan + y*cosan) * 100) / 100]
   // return [x*Math.cos(rotangle) - y*Math.sin(rotangle), x*Math.sin(rotangle) + y*Math.cos(rotangle)];
 }
 
@@ -128,11 +128,11 @@ function collisionturn(a: any, b: any, i: number, j: number) {
 function collision() {
   for (let i = 0; i < balldirections.length; i++) {
     for (let j = i + 1; j < balldirections.length; j++) {
-      if(Math.sqrt((ballcoords[i][0] - ballcoords[j][0])**2 + (ballcoords[i][1] - ballcoords[j][1])**2) <= ballsize*2 + 1 * speedcoeficient - 2) {
+      if(Math.sqrt((ballcoords[i][0] - ballcoords[j][0])**2 + (ballcoords[i][1] - ballcoords[j][1])**2) <= ballsize*2) {
         collisionturn(ballcoords[i], ballcoords[j], i, j);
-        ballcoords[i] = [ballcoords[i][0] + balldirections[i][0], ballcoords[i][1] + balldirections[i][1]];
+     /*   ballcoords[i] = [ballcoords[i][0] + balldirections[i][0], ballcoords[i][1] + balldirections[i][1]];
         ballcoords[j] = [ballcoords[j][0] + balldirections[j][0], ballcoords[j][1] + balldirections[j][1]];
-      }
+      */}
     }
   }
   return ;
@@ -150,7 +150,7 @@ function fillballcoords(a: number) {
 function filldirectionofballs() {
   // a - number of balls
   angle = (Math.floor(Math.random() * 360) + 1) * Math.PI / 180;
-  coords = [speedcoeficient * 2 * (Math.cos(angle) - Math.sin(angle)), speedcoeficient * 2 * (Math.sin(angle) + Math.cos(angle))];    
+  coords = [Math.round(speed * (Math.cos(angle) - Math.sin(angle)) * 100) / 100, Math.round(speed * (Math.sin(angle) + Math.cos(angle)) * 100) / 100];    
   return coords;
 }
 
@@ -179,13 +179,13 @@ function move() {
     if(0 > ballcoords[i][0] - ballsize) {
       balldirections[i][0] = Math.abs(balldirections[i][0]);
     }
-    if(ballcoords[i][0] + ballsize > screensize[0] - 1) {
+    if(ballcoords[i][0] + ballsize > screensize[0] - speed - 1) {
       balldirections[i][0] = Math.abs(balldirections[i][0]) * -1;
     }
     if(0 > ballcoords[i][1] - ballsize) {
       balldirections[i][1] = Math.abs(balldirections[i][1]);
     }
-    if(ballcoords[i][1] + ballsize > screensize[1] - 1) {
+    if(ballcoords[i][1] + ballsize > screensize[1] - speed - 1) {
       balldirections[i][1] = Math.abs(balldirections[i][1]) * -1;
     }
     //
