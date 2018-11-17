@@ -29,7 +29,8 @@ let angle: number;
 let coords: number[];
 let screensize: number[];
 // let frame: any;
-const ballsize: number = 25;
+const ballsize: number = 25 * (window.innerHeight/1010);
+alert(window.innerHeight);
 // let ball_radius: number;
 // tslint:disable-next-line:interface-name
 interface Props{
@@ -158,7 +159,7 @@ function filldirectionofballs() {
 function changeposition(el: HTMLImageElement, elindex: number) {
   // el - element
   ballcoords[elindex] = [ballcoords[elindex][0] + balldirections[elindex][0], ballcoords[elindex][1] + balldirections[elindex][1]];
-  el.setAttribute("style", "left: " + String(ballcoords[elindex][0] - ballsize) + "px; top: " + String(ballcoords[elindex][1] - ballsize) + "px;" + "position: absolute; height: 50px; zIndex: 1");
+  el.setAttribute("style", "left: " + String(ballcoords[elindex][0] - ballsize) + "px; top: " + String(ballcoords[elindex][1] - ballsize) + "px;" + "position: absolute;" + "height: " + String(ballsize*2) + "px; zIndex: 1");
 }
 
 function appendvector() {
@@ -207,7 +208,7 @@ function Ballsimages(balls: number) {
 
   // tslint:disable-next-line:no-any
   const style: any = {
-    'height': '50px',
+    'height': String(2*ballsize) + 'px',
     'position': 'absolute',
     'top': String(-3*ballsize) + 'px',
     'zIndex': '1'
