@@ -130,9 +130,9 @@ function collision() {
     for (let j = i + 1; j < balldirections.length; j++) {
       if(Math.sqrt((ballcoords[i][0] - ballcoords[j][0])**2 + (ballcoords[i][1] - ballcoords[j][1])**2) <= ballsize*2) {
         collisionturn(ballcoords[i], ballcoords[j], i, j);
-     /*   ballcoords[i] = [ballcoords[i][0] + balldirections[i][0], ballcoords[i][1] + balldirections[i][1]];
+        ballcoords[i] = [ballcoords[i][0] + balldirections[i][0], ballcoords[i][1] + balldirections[i][1]];
         ballcoords[j] = [ballcoords[j][0] + balldirections[j][0], ballcoords[j][1] + balldirections[j][1]];
-      */}
+      }
     }
   }
   return ;
@@ -179,13 +179,13 @@ function move() {
     if(0 > ballcoords[i][0] - ballsize) {
       balldirections[i][0] = Math.abs(balldirections[i][0]);
     }
-    if(ballcoords[i][0] + ballsize > screensize[0] - speed - 1) {
+    if(ballcoords[i][0] + ballsize > screensize[0] - speed*2) {
       balldirections[i][0] = Math.abs(balldirections[i][0]) * -1;
     }
     if(0 > ballcoords[i][1] - ballsize) {
       balldirections[i][1] = Math.abs(balldirections[i][1]);
     }
-    if(ballcoords[i][1] + ballsize > screensize[1] - speed - 1) {
+    if(ballcoords[i][1] + ballsize > screensize[1] - speed*2) {
       balldirections[i][1] = Math.abs(balldirections[i][1]) * -1;
     }
     //
