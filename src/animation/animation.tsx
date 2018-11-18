@@ -16,7 +16,6 @@ let ay: number; // y of second vector
 let cosa: number;
 let sina: number;
 let some: number[];
-const speed: number = 2;
 let straight: number[];
 let someone: number[];
 // tslint:disable-next-line:prefer-const
@@ -30,6 +29,7 @@ let coords: number[];
 let screensize: number[];
 // let frame: any;
 const ballsize: number = 25 * Math.min(window.innerHeight/1010, window.innerWidth/1920);
+const speed: number = 2 * Math.min(window.innerHeight/1010, window.innerWidth/1920);
 // let ball_radius: number;
 // tslint:disable-next-line:interface-name
 interface Props{

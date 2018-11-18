@@ -10,11 +10,11 @@ function game(e: any) {
    */
   let balls: number = Number((document.getElementById('ballsnumber') as HTMLInputElement).value);
   if (e.keyCode === 13) {
-    if (balls < 20) {
-      balls = 20;
+    if (balls < 1) {
+      balls = 1;
     }
-    if (balls > 50) {
-      balls = 50;
+    if (balls > 200) {
+      balls = 200;
     }
 
     // creating canvas and running animation
